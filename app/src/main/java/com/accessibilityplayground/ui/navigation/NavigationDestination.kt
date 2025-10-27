@@ -3,7 +3,7 @@ package com.accessibilityplayground.ui.navigation
 interface NavigationDestination {
     val route: String
     val title: String
-    val sideNavLabel : String
+    val sideNavLabel: String
 }
 
 object Home : NavigationDestination {
@@ -23,3 +23,9 @@ object ColorContrast : NavigationDestination {
     override val title = "Color Contrast"
     override val sideNavLabel = "Color Contrast"
 }
+
+val navigationDestinations = listOf(
+    Home,
+    KeyboardAccess,
+    ColorContrast,
+)
