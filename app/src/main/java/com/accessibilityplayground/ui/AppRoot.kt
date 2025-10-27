@@ -22,6 +22,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,7 +65,11 @@ fun AppRoot() {
             val currentScreen = navigationDestinations
                 .find { it.route == currentDestination?.route } ?: Home
             Scaffold(
-                topBar = { TopBar(currentScreen.title) { scope.launch { drawerState.open() } } }
+                topBar = {
+                    TopBar(title = stringResource(currentScreen.title)) {
+                        scope.launch { drawerState.open() }
+                    }
+                }
             ) { innerPadding ->
                 AppNavHost(
                     navController = navController,
@@ -92,7 +97,7 @@ fun SideMenuContent(
                     icon = null,
                     label = {
                         Text(
-                            text = item.sideNavLabel,
+                            text = stringResource(item.sideNavLabel),
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )

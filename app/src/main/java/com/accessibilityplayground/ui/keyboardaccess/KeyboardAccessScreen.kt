@@ -1,23 +1,22 @@
 package com.accessibilityplayground.ui.keyboardaccess
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.accessibilityplayground.ui.components.CollapsibleSection
 import com.accessibilityplayground.ui.components.Dialog
 import com.accessibilityplayground.ui.theme.AccessibilityPlaygroundTheme
 import com.accessibilityplayground.ui.theme.Typography
+import com.accessibilityplayground.R.string as stringRes
 
 @Composable
 fun KeyboardAccessScreen() {
@@ -35,39 +34,39 @@ fun KeyboardAccessScreen() {
     Column(
         modifier = Modifier.verticalScroll(scrollState)
     ) {
-        CollapsibleSection("About") {
+        CollapsibleSection(stringResource(stringRes.about_title)) {
             AboutSection()
         }
-        CollapsibleSection("Default") {
+        CollapsibleSection(stringResource(stringRes.default_title)) {
             Text(
-                text = "By default, a button is shown to be in focus by a slight change in colour:",
+                text = stringResource(stringRes.default_text),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
             )
             ButtonGrid { buttonId ->
                 dialogState.value = DialogState(true, buttonId)
             }
         }
-        CollapsibleSection("Visible Focus - Border") {
+        CollapsibleSection(stringResource(stringRes.visible_focus_border_title)) {
             Text(
-                text = "Here a border makes it clearer which element is in focus:",
+                text = stringResource(stringRes.visible_focus_border_text),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
             )
             FocusBorderButtonGrid { buttonId ->
                 dialogState.value = DialogState(true, buttonId)
             }
         }
-        CollapsibleSection("Visible Focus - Color Change") {
+        CollapsibleSection(stringResource(stringRes.visible_focus_color_change_title)) {
             Text(
-                text = "Here a higher contrast color change makes it clearer which element is in focus:",
+                text = stringResource(stringRes.visible_focus_color_change_text),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
             )
             FocusColorChangeButtonGrid { buttonId ->
                 dialogState.value = DialogState(true, buttonId)
             }
         }
-        CollapsibleSection("Changed Focus Order") {
+        CollapsibleSection(stringResource(stringRes.changed_focus_order_title)) {
             Text(
-                text = "Here the focus order is specified to be different from the default:",
+                text = stringResource(stringRes.changed_focus_order_text),
                 modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
             )
             ButtonGridColumnFirst { buttonId ->
@@ -83,25 +82,25 @@ fun AboutSection() {
         modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
     ) {
         Text(
-            text = "What is Keyboard Access?",
+            text = stringResource(stringRes.about_section_1_title),
             style = Typography.titleMedium,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            text = "Users can navigate and interact with their Android device using a physical keyboard, rather than touching the screen. Your app should allow keyboard users to perform all the actions that are possible using touch.",
+            text = stringResource(stringRes.about_section_1_para_1),
             modifier = Modifier.padding(bottom = 4.dp)
         )
         Text(
-            text = "When navigating with a keyboard, all interactable elements should be focusable. Note, this is different to navigating with a screen reader, which should also focus for example on text elements in order to read them out.",
+            text = stringResource(stringRes.about_section_1_para_2),
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            text = "How to test your app using a keyboard to navigate?",
+            text =  stringResource(stringRes.about_section_2_title),
             style = Typography.titleMedium,
             modifier = Modifier.padding(bottom = 8.dp)
         )
         Text(
-            text = "With your app running in an emulator in Android Studio you can simply press the tab key to move focus to the next element. Press enter to interact with the currently focused element. You can also navigate the screen using the arrow keys.",
+            text = stringResource(stringRes.about_section_2_para_1),
         )
     }
 }
@@ -112,8 +111,10 @@ fun FavouriteButtonDialog(
     onDismiss: () -> Unit,
     onConfirm: () -> Unit,
 ) {
-    var text = "Select this option as your favourite?"
-    buttonId?.let { text = "Select $buttonId as your favourite?" }
+    var text = stringResource(stringRes.favorite_button_dialog_text)
+    buttonId?.let { text =
+        stringResource(stringRes.favorite_button_dialog_text_specific, buttonId)
+    }
     Dialog(
         text = text,
         onDismiss = onDismiss,

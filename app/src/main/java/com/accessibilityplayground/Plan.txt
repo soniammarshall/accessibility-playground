@@ -11,3 +11,7 @@ screens:
     - demonstrate showing visible focus
     - demonstrate default behaviour
     - explain what is keyboard input and how to test it
+- Top bars
+- Font size
+- Color contrast
+- Screen readers

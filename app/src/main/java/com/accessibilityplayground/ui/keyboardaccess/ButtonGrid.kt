@@ -19,184 +19,210 @@ import androidx.compose.ui.focus.FocusRequester.Companion.FocusRequesterFactory.
 import androidx.compose.ui.focus.FocusRequester.Companion.FocusRequesterFactory.component6
 import androidx.compose.ui.focus.focusProperties
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.accessibilityplayground.ui.components.FocusBorderButton
 import com.accessibilityplayground.ui.components.FocusColorChangeButton
 import com.accessibilityplayground.ui.theme.AccessibilityPlaygroundTheme
+import com.accessibilityplayground.R.string as stringRes
 
 @Composable
 fun ButtonGrid(onClick: (String) -> Unit) {
+    val first = stringResource(stringRes.first)
+    val second = stringResource(stringRes.second)
+    val third = stringResource(stringRes.third)
+    val fourth = stringResource(stringRes.fourth)
+    val fifth = stringResource(stringRes.fifth)
+    val sixth = stringResource(stringRes.sixth)
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row {
             Button(
-                onClick = { onClick("First") },
+                onClick = { onClick(first) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("First") }
+            ) { Text(first) }
             Button(
-                onClick = { onClick("Second") },
+                onClick = { onClick(second) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Second") }
+            ) { Text(second) }
         }
         Row {
             Button(
-                onClick = { onClick("Third") },
+                onClick = { onClick(third) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Third") }
+            ) { Text(third) }
             Button(
-                onClick = { onClick("Fourth") },
+                onClick = { onClick(fourth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fourth") }
+            ) { Text(fourth) }
         }
         Row {
             Button(
-                onClick = { onClick("Fifth") },
+                onClick = { onClick(fifth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fifth") }
+            ) { Text(fifth) }
             Button(
-                onClick = { onClick("Sixth") },
+                onClick = { onClick(sixth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Sixth") }
+            ) { Text(sixth) }
         }
     }
 }
 
 @Composable
 fun FocusBorderButtonGrid(onClick: (String) -> Unit) {
+    val first = stringResource(stringRes.first)
+    val second = stringResource(stringRes.second)
+    val third = stringResource(stringRes.third)
+    val fourth = stringResource(stringRes.fourth)
+    val fifth = stringResource(stringRes.fifth)
+    val sixth = stringResource(stringRes.sixth)
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row {
             FocusBorderButton(
-                onClick = { onClick("First") },
+                onClick = { onClick(first) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("First") }
+            ) { Text(first) }
             FocusBorderButton(
-                onClick = { onClick("Second") },
+                onClick = { onClick(second) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Second") }
+            ) { Text(second) }
         }
         Row {
             FocusBorderButton(
-                onClick = { onClick("Third") },
+                onClick = { onClick(third) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Third") }
+            ) { Text(third) }
             FocusBorderButton(
-                onClick = { onClick("Fourth") },
+                onClick = { onClick(fourth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fourth") }
+            ) { Text(fourth) }
         }
         Row {
             FocusBorderButton(
-                onClick = { onClick("Fifth") },
+                onClick = { onClick(fifth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fifth") }
+            ) { Text(fifth) }
             FocusBorderButton(
-                onClick = { onClick("Sixth") },
+                onClick = { onClick(sixth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Sixth") }
+            ) { Text(sixth) }
         }
     }
 }
 
 @Composable
 fun FocusColorChangeButtonGrid(onClick: (String) -> Unit) {
+    val first = stringResource(stringRes.first)
+    val second = stringResource(stringRes.second)
+    val third = stringResource(stringRes.third)
+    val fourth = stringResource(stringRes.fourth)
+    val fifth = stringResource(stringRes.fifth)
+    val sixth = stringResource(stringRes.sixth)
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row {
             FocusColorChangeButton(
-                onClick = { onClick("First") },
+                onClick = { onClick(first) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("First") }
+            ) { Text(first) }
             FocusColorChangeButton(
-                onClick = { onClick("Second") },
+                onClick = { onClick(second) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Second") }
+            ) { Text(second) }
         }
         Row {
             FocusColorChangeButton(
-                onClick = { onClick("Third") },
+                onClick = { onClick(third) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Third") }
+            ) { Text(third) }
             FocusColorChangeButton(
-                onClick = { onClick("Fourth") },
+                onClick = { onClick(fourth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fourth") }
+            ) { Text(fourth) }
         }
         Row {
             FocusColorChangeButton(
-                onClick = { onClick("Fifth") },
+                onClick = { onClick(fifth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Fifth") }
+            ) { Text(fifth) }
             FocusColorChangeButton(
-                onClick = { onClick("Sixth") },
+                onClick = { onClick(sixth) },
                 modifier = Modifier.padding(horizontal = 16.dp)
-            ) { Text("Sixth") }
+            ) { Text(sixth) }
         }
     }
 }
 
 @Composable
 fun ButtonGridColumnFirst(onClick: (String) -> Unit) {
+    val first = stringResource(stringRes.first)
+    val second = stringResource(stringRes.second)
+    val third = stringResource(stringRes.third)
+    val fourth = stringResource(stringRes.fourth)
+    val fifth = stringResource(stringRes.fifth)
+    val sixth = stringResource(stringRes.sixth)
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        val (first, second, third, fourth, fifth, sixth) = remember {
+        val (firstFocus, secondFocus, thirdFocus, fourthFocus, fifthFocus, sixthFocus) = remember {
             FocusRequester.createRefs()
         }
         Row {
             FocusBorderButton(
-                onClick = { onClick("First") },
+                onClick = { onClick(first) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(first)
-                    .focusProperties { next = second }
-            ) { Text("First") }
+                    .focusRequester(firstFocus)
+                    .focusProperties { next = secondFocus }
+            ) { Text(first) }
             FocusBorderButton(
-                onClick = { onClick("Fourth") },
+                onClick = { onClick(fourth) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(fourth)
-                    .focusProperties { next = fifth }
-            ) { Text("Fourth") }
+                    .focusRequester(fourthFocus)
+                    .focusProperties { next = fifthFocus }
+            ) { Text(fourth) }
         }
         Row {
             FocusBorderButton(
-                onClick = { onClick("Second") },
+                onClick = { onClick(second) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(second)
-                    .focusProperties { next = third }
-            ) { Text("Second") }
+                    .focusRequester(secondFocus)
+                    .focusProperties { next = thirdFocus }
+            ) { Text(second) }
             FocusBorderButton(
-                onClick = { onClick("Fifth") },
+                onClick = { onClick(fifth) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(fifth)
-                    .focusProperties { next = sixth }
-            ) { Text("Fifth") }
+                    .focusRequester(fifthFocus)
+                    .focusProperties { next = sixthFocus }
+            ) { Text(fifth) }
         }
         Row {
             FocusBorderButton(
-                onClick = { onClick("Third") },
+                onClick = { onClick(third) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(third)
-                    .focusProperties { next = fourth }
-            ) { Text("Third") }
+                    .focusRequester(thirdFocus)
+                    .focusProperties { next = fourthFocus }
+            ) { Text(third) }
             FocusBorderButton(
-                onClick = { onClick("Sixth") },
+                onClick = { onClick(sixth) },
                 modifier = Modifier
                     .padding(horizontal = 16.dp)
-                    .focusRequester(sixth)
-            ) { Text("Sixth") }
+                    .focusRequester(sixthFocus)
+            ) { Text(sixth) }
         }
     }
 }

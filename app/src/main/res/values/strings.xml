@@ -1,3 +1,40 @@
 <resources>
     <string name="app_name">Accessibility Playground</string>
+
+    <!-- General -->
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="menu">Menu</string>
+
+    <!-- Navigation Destinations -->
+    <string name="home">Home</string>
+    <string name="keyboard_access">Keyboard Access</string>
+    <string name="color_contrast">Color Contrast</string>
+
+    <!-- Home -->
+    <string name="home_welcome_text">Welcome to the Accessibility Playground!</string>
+
+    <!-- Keyboard Access -->
+    <string name="first">First</string>
+    <string name="second">Second</string>
+    <string name="third">Third</string>
+    <string name="fourth">Fourth</string>
+    <string name="fifth">Fifth</string>
+    <string name="sixth">Sixth</string>
+    <string name="about_title">About</string>
+    <string name="about_section_1_title">What is Keyboard Access?</string>
+    <string name="about_section_1_para_1">Users can navigate and interact with their Android device using a physical keyboard, rather than touching the screen. Your app should allow keyboard users to perform all the actions that are possible using touch.</string>
+    <string name="about_section_1_para_2">When navigating with a keyboard, all interactable elements should be focusable. Note, this is different to navigating with a screen reader, which should also focus for example on text elements in order to read them out.</string>
+    <string name="about_section_2_title">How to test your app using a keyboard to navigate?</string>
+    <string name="about_section_2_para_1">With your app running in an emulator in Android Studio you can simply press the tab key to move focus to the next element. Press enter to interact with the currently focused element. You can also navigate the screen using the arrow keys.</string>
+    <string name="default_title">Default</string>
+    <string name="default_text">By default, a button is shown to be in focus by a slight change in colour:</string>
+    <string name="visible_focus_border_title">Visible Focus - Border</string>
+    <string name="visible_focus_border_text">Here a border makes it clearer which element is in focus:</string>
+    <string name="visible_focus_color_change_title">Visible Focus - Color Change</string>
+    <string name="visible_focus_color_change_text">Here a higher contrast color change makes it clearer which element is in focus:</string>
+    <string name="changed_focus_order_title">Changed Focus Order</string>
+    <string name="changed_focus_order_text">Here the focus order is specified to be different from the default:</string>
+    <string name="favorite_button_dialog_text">Select this option as your favourite?</string>
+    <string name="favorite_button_dialog_text_specific">Select %1$s as your favourite?</string>
 </resources>
