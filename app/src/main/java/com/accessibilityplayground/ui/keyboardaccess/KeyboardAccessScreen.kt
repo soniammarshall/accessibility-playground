@@ -75,18 +75,6 @@ fun KeyboardAccessScreen() {
             }
         }
     }
-//    LazyColumn(
-//        contentPadding = contentPadding,
-//        verticalArrangement = Arrangement.spacedBy(8.dp)
-//    ) {
-//        val list = (0..10).map { it.toString() }
-//        items(count = list.size) {
-//            ButtonRow(
-//                index = list[it],
-//                onClick = { buttonId -> dialogState.value = DialogState(true, buttonId) }
-//            )
-//        }
-//    }
 }
 
 @Composable
@@ -131,34 +119,6 @@ fun FavouriteButtonDialog(
         onDismiss = onDismiss,
         onConfirm = onConfirm,
     )
-}
-
-@Composable
-fun ButtonRow(index: String, onClick: (String) -> Unit) {
-    Row {
-        val buttonIdA = "${index}a"
-        val buttonIdB = "${index}b"
-        Button(
-            onClick = { onClick(buttonIdA) },
-            modifier = Modifier.padding(8.dp)
-        ) {
-            Text(
-                text = buttonIdA,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
-        }
-        Button(
-            onClick = { onClick(buttonIdB) },
-            modifier = Modifier.padding(8.dp)
-        ) {
-            Text(
-                text = buttonIdB,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
-        }
-    }
 }
 
 data class DialogState(
