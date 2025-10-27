@@ -15,7 +15,7 @@ import com.accessibilityplayground.ui.theme.Typography
 import com.accessibilityplayground.R.drawable as uiResources
 
 @Composable
-fun TopBar(title: String) {
+fun TopBar(title: String, onMenuClick: () -> Unit = {}) {
     TopAppBar(
         title = {
             Text(
@@ -27,7 +27,7 @@ fun TopBar(title: String) {
         },
         navigationIcon = {
             IconButton(
-                onClick = { /* doSomething() */ },
+                onClick = onMenuClick,
                 modifier = Modifier.focusBorder(),
             ) {
                 Icon(

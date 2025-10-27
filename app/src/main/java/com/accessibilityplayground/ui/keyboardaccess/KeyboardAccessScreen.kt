@@ -1,7 +1,6 @@
-package com.accessibilityplayground.ui.keyboard
+package com.accessibilityplayground.ui.keyboardaccess
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
@@ -13,13 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.accessibilityplayground.ui.components.CollapsibleSection
 import com.accessibilityplayground.ui.components.Dialog
+import com.accessibilityplayground.ui.theme.AccessibilityPlaygroundTheme
 import com.accessibilityplayground.ui.theme.Typography
 
 @Composable
-fun KeyboardAccessScreenContent(contentPadding: PaddingValues) {
+fun KeyboardAccessScreen() {
     val scrollState = rememberScrollState()
     val dialogState = remember { mutableStateOf(DialogState()) }
     if (dialogState.value.show) {
@@ -32,9 +33,7 @@ fun KeyboardAccessScreenContent(contentPadding: PaddingValues) {
     }
 
     Column(
-        modifier = Modifier
-            .padding(contentPadding)
-            .verticalScroll(scrollState)
+        modifier = Modifier.verticalScroll(scrollState)
     ) {
         CollapsibleSection("About") {
             AboutSection()
@@ -166,3 +165,11 @@ data class DialogState(
     val show: Boolean = false,
     val buttonId: String? = null,
 )
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewKeyboardAccessScreenContent() {
+    AccessibilityPlaygroundTheme {
+        KeyboardAccessScreen()
+    }
+}

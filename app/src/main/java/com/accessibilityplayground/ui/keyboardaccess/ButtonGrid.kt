@@ -1,4 +1,4 @@
-package com.accessibilityplayground.ui.keyboard
+package com.accessibilityplayground.ui.keyboardaccess
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
