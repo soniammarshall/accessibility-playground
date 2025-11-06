@@ -162,6 +162,7 @@ fun FocusColorChangeButtonGrid(onClick: (String) -> Unit) {
     }
 }
 
+// TODO look into focusGroup modifier
 @Composable
 fun ButtonGridColumnFirst(onClick: (String) -> Unit) {
     val first = stringResource(stringRes.first)

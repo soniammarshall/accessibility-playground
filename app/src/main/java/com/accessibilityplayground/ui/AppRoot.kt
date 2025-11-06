@@ -22,6 +22,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusProperties
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,7 +47,7 @@ fun AppRoot() {
     val scope = rememberCoroutineScope()
     val items = navigationDestinations
     val selectedItem = remember { mutableStateOf(items[0]) }
-    // TODO fix keyboard focus for sidebar
+    val firstNavItem = remember {  FocusRequester() }
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -52,6 +55,7 @@ fun AppRoot() {
                 drawerState = drawerState,
                 items = items,
                 selectedItem = selectedItem.value,
+                firstItem = firstNavItem,
                 onClick = { item ->
                     scope.launch { drawerState.close() }
                     selectedItem.value = item
@@ -66,9 +70,16 @@ fun AppRoot() {
                 .find { it.route == currentDestination?.route } ?: Home
             Scaffold(
                 topBar = {
-                    TopBar(title = stringResource(currentScreen.title)) {
-                        scope.launch { drawerState.open() }
-                    }
+                    TopBar(
+                        title = stringResource(currentScreen.title),
+                        onMenuClick = {
+                            // open the side menu and move focus to the first menu item
+                            scope.launch {
+                                drawerState.open()
+                                firstNavItem.requestFocus()
+                            }
+                        },
+                    )
                 }
             ) { innerPadding ->
                 AppNavHost(
@@ -87,12 +98,13 @@ fun SideMenuContent(
     drawerState: DrawerState,
     items: List<NavigationDestination>,
     selectedItem: NavigationDestination,
+    firstItem: FocusRequester,
     onClick: (NavigationDestination) -> Unit,
 ) {
     ModalDrawerSheet(drawerState) {
         Column(Modifier.verticalScroll(rememberScrollState())) {
             Spacer(Modifier.height(12.dp))
-            items.forEach { item ->
+            items.forEachIndexed { index,  item ->
                 NavigationDrawerItem(
                     icon = null,
                     label = {
@@ -106,7 +118,16 @@ fun SideMenuContent(
                     onClick = { onClick(item) },
                     modifier = Modifier
                         .padding(NavigationDrawerItemDefaults.ItemPadding)
-                        .focusBorder(),
+                        .focusBorder()
+                        .focusProperties {
+                            // only focus the menu items when the side menu is open, to prevent
+                            // focus from moving to hidden menu items when the side menu is closed
+                            canFocus = drawerState.isOpen
+                            // after the last menu item move focus back to the first item, to prevent
+                            // focus going to the elements on the screen underneath the side menu
+                            if (index == items.size - 1) next = firstItem
+                        }
+                        .then(if (index == 0) Modifier.focusRequester(firstItem) else Modifier)
                 )
             }
         }

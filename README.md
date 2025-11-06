@@ -13,9 +13,9 @@ The below video demonstrates navigating a screen with several collapsible sectio
 [Screen_recording_20251106_113809.webm](https://github.com/user-attachments/assets/8de55810-52a3-4143-975c-62e1a9da4cac)
 
 Ideas for what to cover next:
-- fixing some keyboard focus issues with the side menu navigation
 - top bars with long titles (https://github.com/GuessWh0o/AccessibleTopBars)
 - supporting different font sizes
 - color contrast ratios
 - screen readers - focus order, content descriptions, roles, state descriptions
 - voice access
+- home screen - summarise info, create widgets, link to articles?
