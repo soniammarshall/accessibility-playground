@@ -37,4 +37,10 @@
     <string name="changed_focus_order_text">Here the focus order is specified to be different from the default:</string>
     <string name="favorite_button_dialog_text">Select this option as your favourite?</string>
     <string name="favorite_button_dialog_text_specific">Select %1$s as your favourite?</string>
+    <string name="request_focus_title">Request Focus</string>
+    <string name="request_focus_text">You can move the focus to another element upon a button click:</string>
+    <string name="move_right">Move focus -&gt;</string>
+    <string name="move_right_content_description">Move focus to the right</string>
+    <string name="move_left">&lt;- Move focus</string>
+    <string name="move_left_content_description">Move focus to the left</string>
 </resources>

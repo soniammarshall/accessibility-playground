@@ -19,3 +19,5 @@ Ideas for what to cover next:
 - screen readers - focus order, content descriptions, roles, state descriptions
 - voice access
 - home screen - summarise info, create widgets, link to articles?
+- dark mode
+- landscape orientation

@@ -1,6 +1,9 @@
 package com.accessibilityplayground.ui.keyboardaccess
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,11 +12,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.FocusRequester.Companion.FocusRequesterFactory.component1
+import androidx.compose.ui.focus.FocusRequester.Companion.FocusRequesterFactory.component2
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.accessibilityplayground.ui.components.CollapsibleSection
 import com.accessibilityplayground.ui.components.Dialog
+import com.accessibilityplayground.ui.components.FocusBorderButton
 import com.accessibilityplayground.ui.theme.AccessibilityPlaygroundTheme
 import com.accessibilityplayground.ui.theme.Typography
 import com.accessibilityplayground.R.string as stringRes
@@ -34,9 +44,7 @@ fun KeyboardAccessScreen() {
     Column(
         modifier = Modifier.verticalScroll(scrollState)
     ) {
-        CollapsibleSection(stringResource(stringRes.about_title)) {
-            AboutSection()
-        }
+        AboutSection()
         CollapsibleSection(stringResource(stringRes.default_title)) {
             Text(
                 text = stringResource(stringRes.default_text),
@@ -73,35 +81,74 @@ fun KeyboardAccessScreen() {
                 dialogState.value = DialogState(true, buttonId)
             }
         }
+        RequestFocusSection()
     }
 }
 
 @Composable
 fun AboutSection() {
-    Column(
-        modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
-    ) {
+    CollapsibleSection(stringResource(stringRes.about_title)) {
+        Column(
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
+        ) {
+            Text(
+                text = stringResource(stringRes.about_section_1_title),
+                style = Typography.titleMedium,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = stringResource(stringRes.about_section_1_para_1),
+                modifier = Modifier.padding(bottom = 4.dp)
+            )
+            Text(
+                text = stringResource(stringRes.about_section_1_para_2),
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = stringResource(stringRes.about_section_2_title),
+                style = Typography.titleMedium,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Text(
+                text = stringResource(stringRes.about_section_2_para_1),
+            )
+        }
+    }
+}
+
+@Composable
+fun RequestFocusSection() {
+    CollapsibleSection(stringResource(stringRes.request_focus_title)) {
         Text(
-            text = stringResource(stringRes.about_section_1_title),
-            style = Typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
+            text = stringResource(stringRes.request_focus_text),
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp)
         )
-        Text(
-            text = stringResource(stringRes.about_section_1_para_1),
-            modifier = Modifier.padding(bottom = 4.dp)
-        )
-        Text(
-            text = stringResource(stringRes.about_section_1_para_2),
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Text(
-            text =  stringResource(stringRes.about_section_2_title),
-            style = Typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Text(
-            text = stringResource(stringRes.about_section_2_para_1),
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+        ) {
+            val (left, right) = remember { FocusRequester.createRefs() }
+            FocusBorderButton(
+                onClick = { right.requestFocus() },
+                modifier = Modifier.focusRequester(left),
+            ) {
+                val contentDescr = stringResource(stringRes.move_right_content_description)
+                Text(
+                    text = stringResource(stringRes.move_right),
+                    modifier = Modifier.semantics { contentDescription = contentDescr },
+                )
+            }
+            FocusBorderButton(
+                onClick = { left.requestFocus() },
+                modifier = Modifier.focusRequester(right),
+            ) {
+                val contentDescr = stringResource(stringRes.move_left_content_description)
+                Text(
+                    text = stringResource(stringRes.move_left),
+                    modifier = Modifier.semantics { contentDescription = contentDescr },
+                )
+            }
+        }
     }
 }
 
